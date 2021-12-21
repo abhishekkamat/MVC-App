@@ -33,8 +33,17 @@ const contactsData = [
 
 class AddressBookView {
     init() {
-        console.log("Render HTML here");
+        console.log("Render HTML here", this);
         this.renderContactListModule();
+    }
+    renderContactDetailsModule(e) {
+        let selectedIndex = null;
+        if (typeof e === 'object') {
+            e.stopPropagation();
+            selectedIndex = this.getAttribute('data-index')
+        } else {
+            selectedIndex = e;
+        }
     }
 
 }
@@ -46,11 +55,15 @@ class AddressBookCtrl {
         this.addressBookView = addressBookView;
     }
     init() {
-        this.addressBookView.init();
+        this.renderContactListModule();
+        //this.addressBookView.init();
     }
 
     getContacts() {
         return contactsData;
+    }
+    getContact(index) {
+        return contactsData[index];
     }
 
     renderContactListModule() {
@@ -76,3 +89,50 @@ class AddressBookCtrl {
 const addressBookApp = new AddressBookCtrl(addressBookView);
 
 addressBookApp.init();
+
+
+class model{
+    constructor(){
+        
+    }
+    init(){
+
+    }
+    create(){
+
+    }
+    get(){
+
+    }
+    getCollection(){
+
+    }
+    append(){
+
+    }
+}
+
+
+class view{
+
+    constructor(){
+
+    }
+    getElementfromDom(){
+
+    }
+    getCollectionFromDom(){
+
+    }
+    appendNode(){
+
+    }
+    replaceNode(){
+
+    }
+}
+
+
+class controller{
+    
+}
